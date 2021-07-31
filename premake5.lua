@@ -37,13 +37,20 @@ project "SpaceX"
 		"%{LinkDir.SFML}"
 	}
 
+	links{		
+		"opengl32",
+		"winmm",
+		"gdi32",
+		"freetype"
+	}
+
 	defines{
 		"SFML_STATIC"
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "on"
+		staticruntime "off"
 		systemversion "latest"
 		 
 		defines{
@@ -54,7 +61,6 @@ project "SpaceX"
 		kind "ConsoleApp"
 		defines	"DEBUG"
 		runtime "Debug"
-		buildoptions "/MDd"
 		symbols "on"
 		links{
 			"sfml-main-d",
@@ -62,17 +68,13 @@ project "SpaceX"
 			"sfml-graphics-s-d",
 			"sfml-window-s-d",
 			"sfml-audio-s-d",
-			"sfml-network-s-d",
-			"opengl32",
-			"winmm",
-			"gdi32"
+			"sfml-network-s-d"
 		}
 
 	filter "configurations:Release"
 		kind "ConsoleApp"
 		defines "RELEASE"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"
 		links{
 			"sfml-main",
@@ -80,17 +82,13 @@ project "SpaceX"
 			"sfml-graphics-s",
 			"sfml-window-s",
 			"sfml-audio-s",
-			"sfml-network-s",
-			"opengl32",
-			"winmm",
-			"gdi32"
+			"sfml-network-s"
 		}
 
 	filter "configurations:Dist"
 		kind "WindowedApp"
 		defines "DIST"
 		runtime "Release"
-		buildoptions "/MD"
 		optimize "on"
 		links{
 			"sfml-main",
@@ -98,8 +96,5 @@ project "SpaceX"
 			"sfml-graphics-s",
 			"sfml-window-s",
 			"sfml-audio-s",
-			"sfml-network-s",
-			"opengl32",
-			"winmm",
-			"gdi32"
+			"sfml-network-s"
 		}
